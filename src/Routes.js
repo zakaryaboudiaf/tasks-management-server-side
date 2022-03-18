@@ -1,13 +1,16 @@
 
 const express = require("express")
 const { authenticationMiddleware } = require("./Middlewares")
-const { login , register , getAllJobs , getSingleJob , createJob , updateJob , deleteJob } = require("./Controllers")
+const { login , register , updateUser , deleteUser , getAllJobs , getSingleJob , createJob , updateJob , deleteJob } = require("./Controllers")
 
 
 const router = express.Router()
 
 router.post('/auth/login' , login)
 router.post('/auth/register' , register)
+
+router.patch('/user' , authenticationMiddleware , updateUser)
+router.delete('/user' , authenticationMiddleware , deleteUser)
 
 router.get('/tasks' , authenticationMiddleware , getAllJobs)
 router.post('/tasks' , authenticationMiddleware , createJob)
