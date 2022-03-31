@@ -62,6 +62,17 @@ const register = asyncWrapper( async (req , res , next) => {
     Users Controllers 
 ===============================================================================================
 */
+const getUser = asyncWrapper(async(req , res , next) => {
+    const userId = req.user.userId
+    const user = await User.findById({_id : userId})
+    const {_id , name , email} = user
+    const lastName = user.lastName || ""
+    res.status(200).json({_id , name , lastName , email})
+
+})
+
+
+
 const updateUser = asyncWrapper(async(req , res , next) => {
 
     const userId = req.user.userId
@@ -190,6 +201,7 @@ const deleteJob = asyncWrapper( async (req , res , next) => {
 module.exports = {
     login,
     register,
+    getUser,
     updateUser,
     deleteUser,
     getAllJobs,
