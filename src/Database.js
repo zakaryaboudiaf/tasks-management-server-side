@@ -23,12 +23,12 @@ const userSchema = mongoose.Schema({
         type : String,
         trim : true,
         required : [true , 'Please provide a name'],
+        minLength : [3 , 'The name must be more then 3 caracters'],
         maxLength : [50 , 'The name must be less then 50 caracters']
     },
     lastName : {
         type : String,
         trim : true,
-        minLength : [3 , 'The last name must be more then 4 caracters'],
         maxLength : [50 , 'The last name must be less then 50 caracters']
     },
     email : {
