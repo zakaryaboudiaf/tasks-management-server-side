@@ -88,7 +88,7 @@ const updateUser = asyncWrapper(async(req , res , next) => {
     if(!user){
         return next(new CustomError('Invalid User' , 401))
     }
-    res.status(200).json({user})
+    res.status(200).json(user)
 })
 
 const deleteUser = asyncWrapper(async(req , res , next) => {
@@ -119,7 +119,7 @@ const deleteUser = asyncWrapper(async(req , res , next) => {
 
     const deletedUser = await User.deleteOne({_id : userId})
 
-    res.status(200).json({user})
+    res.status(200).json(user)
 })
 
 /*
